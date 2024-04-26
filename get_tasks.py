@@ -26,15 +26,28 @@ kb = kanboard.Client(url='https://example.org/jsonrpc.php',
 # my personal API access token: "161879c114609f1674d2cf1f215dfd358501e1bff83613fe8c6fd9cb3309"
 
 # I am not getting access
+
 kb = kanboard.Client(url='http://cgi-kanban.nrm.se/jsonrpc.php',
                     username = 'alexyara',
-                    password = '161879c114609f1674d2cf1f215dfd358501e1bff83613fe8c6fd9cb3309',
-                    insecure = 'True')
+                    password = '161879c114609f1674d2cf1f215dfd358501e1bff83613fe8c6fd9cb3309')
 
-#projects = kb.get_my_projects()
-#print(projects)
-project = kb.get_project_by_name('Biodiv projekt')
+
+"""
+board = kanboard.Kanboard('http://cgi-kanban.nrm.se/jsonrpc.php', 
+                            '161879c114609f1674d2cf1f215dfd358501e1bff83613fe8c6fd9cb3309')
+
+project = board.get_project_by_name('Biodiv projekt')
 print(project)
+"""
+#print(kb)
+projects = kb.get_my_projects()
+print(projects)
+
+print(help(kanboard))
+
+#project = kb.get_project_by_id(1)
+#print(project)
+
 #tasks = project.get_all_tasks()
 
 #for task in tasks:
