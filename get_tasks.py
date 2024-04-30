@@ -43,12 +43,22 @@ print(project)
 projects = kb.get_my_projects()
 print(projects)
 
-print(help(kanboard))
+#print(help(kanboard))
 
-#project = kb.get_project_by_id(1)
-#print(project)
+print('- - - - - - - - - - - -')
+"""
+project = kb.get_project_by_id(project_id=1)
+print(project)
+"""
+print('- - - - - - - - - - - -')
 
-#tasks = project.get_all_tasks()
+#tasks = kb.get_all_tasks(project_id=1, status_id=0)
+#print(tasks)
+
+print('- - - - - - - - - - - -')
+
+subtasks = kb.get_all_subtasks(task_id=315)
+print(subtasks)
 
 #for task in tasks:
 #    print(task.title)
