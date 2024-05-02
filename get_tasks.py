@@ -28,10 +28,10 @@ subtasks = kb.get_all_subtasks(task_id=315)
 print(subtasks)
 
 class Tasks:
-    def __init__(self, dnr, subtask_received, subtask_extracted, subtask_sent-away, subtask_analysis):
+    def __init__(self, dnr, subtask_received, subtask_extracted, subtask_sentaway, subtask_analysis):
         self.dnr = dnr
         self.subtask_received = subtask_received
         self.subtask_extracted = subtask_extracted
-        self.subtask_sent-away = subtask_sent-away
+        self.subtask_sentaway = subtask_sentaway
         self.subtask_analysis = subtask_analysis
 
