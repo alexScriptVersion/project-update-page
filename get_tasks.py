@@ -25,9 +25,9 @@ print(project)
 print('- - - - - - - - - - - -')
 
 subtasks = kb.get_all_subtasks(task_id=315)
-print(subtasks)
-print('- - - - - - - - - - - -')
-print(subtasks[1])
+#print(subtasks)
+print('- - - - - - - - - - - - - - - - - -')
+#print(subtasks[1])
 
 for subtask in subtasks:
     print(subtask)
@@ -35,11 +35,28 @@ for subtask in subtasks:
     print(subtask['id'])
 
 print('- - - - - - - - - - - -')
+
+
+"""
+class Tasks:
+    def __init__(self, dnr, subtask_received, subtask_extracted, subtask_sentaway, subtask_analysis):
+        self.dnr = dnr
+        self.subtask_received = subtask_received
+        self.subtask_extracted = subtask_extracted
+        self.subtask_sentaway = subtask_sentaway
+        self.subtask_analysis = subtask_analysis
+
+"""
+
 """
 task_list = []
 
 for task in tasks:
-    task_list.append(task)
+    # get ID for task
+    # then get all subtasks using that ID (maybe not)
+    # get the subtasks of interest and make Task object with them
+    # append object to task_list
+    # task_list.append(task)
     
 
 print(len(task_list))
@@ -53,16 +70,4 @@ Filter out the subtasks that we want
 - different statuses
 Save them in an object representing that task
 Append all task objects to a list, which will be the reference for the web page
-"""
-
-
-"""
-class Tasks:
-    def __init__(self, dnr, subtask_received, subtask_extracted, subtask_sentaway, subtask_analysis):
-        self.dnr = dnr
-        self.subtask_received = subtask_received
-        self.subtask_extracted = subtask_extracted
-        self.subtask_sentaway = subtask_sentaway
-        self.subtask_analysis = subtask_analysis
-
 """
