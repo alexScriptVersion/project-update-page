@@ -1,4 +1,5 @@
 import kanboard
+import csv
 
 # Personal API access token: "161879c114609f1674d2cf1f215dfd358501e1bff83613fe8c6fd9cb3309"
 
@@ -54,8 +55,15 @@ for task in tasks:
 print('- - - - - - - - - - - -')
 
 # Export the task_object_list as a CSV file
+csv_fields = ['dnr_string', 'Diarienummer', 'Rapport', 'Fakturerad'] 
 
-
+with open('task_statuses', 'w') as csvfile:
+    # csv.writer() method
+    write = csv.writer(csvfile)
+    write.writerow(csv_fields)
+    
+    for object in task_object_list:
+        write.writerows(object.dnr, subtask_diarienummer, subtask_rapport, subtask_fakturerad)
 
 """
 Statuses:
