@@ -31,8 +31,9 @@ for task in tasks:
     # Make an empty class instance to add dnr and statuses to
     task_object = Tasks_class()
     
-    # Adds the whole title (containing the dnr)
-    task_object.dnr = task['title']
+    # Adds the whole title (containing the dnr), but first remove all commas (to not disturb in the csv file later)
+    dnr_string = task['title'].replace(',', '')
+    task_object.dnr = dnr_string
     
     
     # Get all subtasks for the current task
@@ -64,7 +65,12 @@ with open('task_statuses', 'w', newline='') as csvfile:
     write.writerow(csv_fields)
     
     for object in task_object_list:
-        write.writerow([object.dnr, object.subtask_diarienummer, object.subtask_rapport, object.subtask_fakturerad])
+        write.writerow([
+        object.dnr, 
+        object.subtask_diarienummer, 
+        object.subtask_rapport, 
+        object.subtask_fakturerad
+        ])
 
 """
 Statuses:
