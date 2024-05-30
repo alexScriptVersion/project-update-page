@@ -54,6 +54,7 @@ for task in tasks:
 
 print('- - - - - - - - - - - -')
 
+"""
 # Export the task_object_list as a CSV file
 csv_fields = ['dnr_string', 'Diarienummer', 'Rapport', 'Fakturerad'] 
 
@@ -63,8 +64,8 @@ with open('task_statuses', 'w') as csvfile:
     write.writerow(csv_fields)
     
     for object in task_object_list:
-        write.writerows(object.dnr, subtask_diarienummer, subtask_rapport, subtask_fakturerad)
-
+        write.writerows(object.dnr, object.subtask_diarienummer, object.subtask_rapport, object.subtask_fakturerad)
+"""
 """
 Statuses:
 - Prover mottagna
