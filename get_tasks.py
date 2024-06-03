@@ -1,5 +1,6 @@
 import kanboard
 import csv
+import json
 
 # Personal API access token: "161879c114609f1674d2cf1f215dfd358501e1bff83613fe8c6fd9cb3309"
 
@@ -58,7 +59,7 @@ print('- - - - - - - - - - - -')
 
 # Export the task_object_list as a CSV file
 csv_fields = ['dnr_string', 'Diarienummer', 'Rapport', 'Fakturerad'] 
-
+"""
 with open('task_statuses', 'w', newline='') as csvfile:
     # csv.writer() method
     write = csv.writer(csvfile)
@@ -71,6 +72,9 @@ with open('task_statuses', 'w', newline='') as csvfile:
         object.subtask_rapport, 
         object.subtask_fakturerad
         ])
+"""
+with open('data.json', 'w', encoding='utf-8') as f:
+    json.dump([ob.__dict__ for ob in task_object_list], f, ensure_ascii=False)
 
 """
 Statuses:
