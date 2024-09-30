@@ -32,13 +32,9 @@ for task in tasks:
     # Make an empty class instance to add dnr and statuses to
     task_object = Tasks_class()
     
-    # Adds the whole title (containing the dnr) to 'dnr_string', but first remove all commas (to not disturb in the csv file later)
-    # filter out only the dnr number. Demand: 1) the dnr needs to be at the end, and 2) have a colon ('dnr:')
-    dnr_string = task['title'].replace(',', '').lower()
-    dnr_index = dnr_string.rfind('dnr:') + 4
-    dnr = dnr_string[dnr_index:].strip()
-    
-    task_object.dnr = dnr
+    # Adds the whole title (containing the dnr), but first remove all commas (to not disturb in the csv file later)
+    dnr_string = task['title'].replace(',', '')
+    task_object.dnr = dnr_string
     
     
     # Get all subtasks for the current task
