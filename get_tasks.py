@@ -11,7 +11,39 @@ kb = kanboard.Client(url='http://cgi-kanban.nrm.se/jsonrpc.php',
 
 # Fetch all tasks in the "Biodiv projekt" project on Kanban, id = 1
 tasks = kb.get_all_tasks(project_id=1, status_id=1)
+columns = kb.get_columns(project_id=1)
 
+for column in columns:
+    print(column)
+    print("- - - -")
+
+# Empty list that will contain all the filtered tasks. Each task will be a dictionary and have its dnr number and column id
+list_of_filtered_tasks = []
+
+# Loop through all the tasks fetched from kanban, and filter out the information we need for the web page
+for task in tasks:
+    
+    # Skip projects that we are not actively working on. 'continue' skips the remaining code of the current iteration, and continues to the next
+    if task['color']['name'] != 'Green':
+        continue
+    
+    # Adds the whole title (containing the dnr) to 'dnr_string', but first remove all commas (to not disturb in the csv file later)
+    # filter out only the dnr number. Demand: 1) the dnr needs to be at the end, and 2) have a colon ('dnr:')
+    dnr_string = task['title'].replace(',', '').lower()
+    dnr_index = dnr_string.rfind('dnr:') + 4
+    dnr = dnr_string[dnr_index:].strip()
+    #print(dnr)
+    
+    # get the column id of the task
+    column_id = task['column_id']
+    #print(column_id)
+    
+    current_task_dictionary = {'dnr': dnr, 'column_id': column_id}
+    
+    list_of_filtered_tasks.append(current_task_dictionary)
+
+#print(list_of_filtered_tasks)
+"""
 # Creates the Tasks_class class, 'pass' makes it possible to make it empty
 class Tasks_class:
     pass
@@ -59,10 +91,11 @@ for task in tasks:
     task_object_list.append(task_object)
 
 print('- - - - - - - - - - - -')
-
-
+"""
+"""
 # Export the task_object_list as a CSV file
 csv_fields = ['dnr_string', 'Diarienummer', 'Rapport', 'Fakturerad'] 
+"""
 """
 with open('task_statuses', 'w', newline='') as csvfile:
     # csv.writer() method
@@ -76,9 +109,12 @@ with open('task_statuses', 'w', newline='') as csvfile:
         object.subtask_rapport, 
         object.subtask_fakturerad
         ])
+
+"""
 """
 with open('data.json', 'w', encoding='utf-8') as f:
     json.dump([ob.__dict__ for ob in task_object_list], f, ensure_ascii=False)
+"""
 
 """
 Statuses:
