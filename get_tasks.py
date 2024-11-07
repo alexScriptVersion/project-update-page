@@ -13,9 +13,11 @@ kb = kanboard.Client(url='http://cgi-kanban.nrm.se/jsonrpc.php',
 tasks = kb.get_all_tasks(project_id=1, status_id=1)
 columns = kb.get_columns(project_id=1)
 
+"""
 for column in columns:
     print(column)
     print("- - - -")
+"""
 
 # Empty list that will contain all the filtered tasks. Each task will be a dictionary and have its dnr number and column id
 list_of_filtered_tasks = []
@@ -43,6 +45,11 @@ for task in tasks:
     list_of_filtered_tasks.append(current_task_dictionary)
 
 #print(list_of_filtered_tasks)
+print('- - - - - - - - - - - -')
+
+with open("data.json", "w") as j:
+    json.dump(list_of_filtered_tasks, j)
+
 """
 # Creates the Tasks_class class, 'pass' makes it possible to make it empty
 class Tasks_class:
