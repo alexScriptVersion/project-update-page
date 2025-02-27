@@ -13,11 +13,18 @@ kb = kanboard.Client(url='http://cgi-kanban.nrm.se/jsonrpc.php',
 tasks = kb.get_all_tasks(project_id=1, status_id=1)
 columns = kb.get_columns(project_id=1)
 
-"""
+
 for column in columns:
     print(column)
     print("- - - -")
-"""
+
+# id 1 = Incoming
+# id 2 = To be started
+# id 176 = On going
+# id 134 = Lab-work done
+# id 177 = In analysis
+# id 3 = Finished projects
+# id 4 = Invoiced projects
 
 # Empty list that will contain all the filtered tasks. Each task will be a dictionary and have its dnr number and column id
 list_of_filtered_tasks = []
