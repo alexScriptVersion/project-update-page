@@ -13,10 +13,11 @@ kb = kanboard.Client(url='http://cgi-kanban.nrm.se/jsonrpc.php',
 tasks = kb.get_all_tasks(project_id=1, status_id=1)
 columns = kb.get_columns(project_id=1)
 
-
+"""
 for column in columns:
     print(column)
     print("- - - -")
+"""
 
 # id 1 = Incoming
 # id 2 = To be started
@@ -31,9 +32,9 @@ list_of_filtered_tasks = []
 
 # Loop through all the tasks fetched from kanban, and filter out the information we need for the web page
 for task in tasks:
-    
+    # print(task['color'])
     # Skip projects that we are not actively working on. 'continue' skips the remaining code of the current iteration, and continues to the next
-    if task['color']['name'] != 'Green':
+    if task['color']['name'] == 'Red':
         continue
     
     # Adds the whole title (containing the dnr) to 'dnr_string', but first remove all commas (to not disturb in the csv file later)
